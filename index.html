@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorteador de Nomes e Amigo Secreto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="container">
+
+    <h1>Sorteador de Nomes</h1>
+    <h2>Amigo Secreto</h2>
+
+    <section class="card">
+      <h3>Participantes</h3>
+
+      <input 
+        type="text" 
+        id="inputNome" 
+        placeholder="Digite um nome ou vários separados por vírgula">
+
+      <button id="btnAdicionar">Adicionar</button>
+
+      <p>Total de participantes: <span id="totalParticipantes">0</span></p>
+
+      <ul id="listaParticipantes">
+        <li>Nenhum participante cadastrado ainda.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h3>Sorteio Simples</h3>
+      <p>Sorteie um nome aleatório da lista.</p>
+
+      <button id="btnSortearSimples">Sortear Nome</button>
+
+      <p id="resultadoSimples"></p>
+
+      <button id="btnNovamente">Sortear Novamente</button>
+    </section>
+
+    <section class="card">
+      <h3>Amigo Secreto</h3>
+      <p>Cada participante poderá ver apenas o seu amigo secreto.</p>
+
+      <button id="btnSortearAmigo">Realizar Sorteio</button>
+      <button id="btnRefazer">Refazer Sorteio</button>
+
+      <p id="msgAmigoSecreto"></p>
+
+      <ul id="listaResultados"></ul>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
