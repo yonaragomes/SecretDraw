@@ -62,7 +62,7 @@ input {
 
 button {
   width: 100%;
-  margin-top: 16px;
+  margin-top: 10px;
   padding: 10px;
   background: #b91c1c;
   color: white;
@@ -76,10 +76,15 @@ button:hover {
   background: #7f1d1d;
 }
 
-#resultado {
-  margin-top: 20px;
+.cardSS {
+  margin-top: 60px;
+}
+
+#resultadoSimples {
+  margin-top: 12px;
+  margin-bottom: 0;
   padding: 16px;
-  background: white;
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 4px;
   font-size: 20px;
   font-weight: bold;
@@ -87,8 +92,12 @@ button:hover {
   color: #b91c1c;
 }
 
-.cardSS {
-  margin-top: 60px;
+.cardSS button {
+  margin-top: 0;
+}
+
+.cardSS #btnNovamente {
+  margin-top: 10px;
 }
 
 .cardAS {
