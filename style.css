@@ -7,15 +7,39 @@ body {
   color: #FFFFFF;
 }
 
+body {
+  background: linear-gradient(
+    to right,
+    #3a0000,
+    #000000,
+    #3a0000
+  );
+
+  color: #FFFFFF;
+}
+
 h1 {
+  font-family: 'Anton', sans-serif;
   color: #b91c1c;
   text-align: center;
+
+  font-size: 50px;
+  font-weight: 650;
+
   margin-bottom: 0;
+  letter-spacing: 1px;
+
+  white-space: nowrap;
 }
 
 h2 {
+  font-family: Arial, sans-serif;
   text-align: center;
   margin-top: 0;
+
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 label {

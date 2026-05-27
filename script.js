@@ -24,3 +24,5 @@ botao.addEventListener("click", adicionar);
 // - adiciona em um Array e limpa o input
 // - aumenta total de participantes
 // - adiciona o nome do participante na lista
+
+
