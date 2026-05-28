@@ -11,43 +11,49 @@ nSorteado.style.display = "none"
 
 function adicionarNomes() {
     if (input.value) {
-        const nome = (input.value);
-        nomes.push(nome)
+        const nome = (input.value)
+        
+        const listaNomes = nome.split(",")
 
-        let nParticipantes = Number(span.textContent)
-        nParticipantes += 1
-        span.textContent = nParticipantes
+        listaNomes.forEach(nome => {
+            nome = nome.trim()
 
-        const item = document.createElement("li")
-        const rm = document.createElement("span")
-        rm.classList.add("remover")
-        rm.textContent = "x"
+            if (nome !== "") {
+                nomes.push(nome)
 
-        item.textContent = nome
-        item.appendChild(rm)
-        listaParticipantes.appendChild(item)
+                let nParticipantes = Number(span.textContent)
+                nParticipantes += 1
+                span.textContent = nParticipantes
 
-        function removerNome() {
-            item.remove()
+                const item = document.createElement("li")
+                const rm = document.createElement("span")
+                rm.classList.add("remover")
+                rm.textContent = "x"
 
-            nomes = nomes.filter(n => n !== nome)
+                item.textContent = nome
+                item.appendChild(rm)
+                listaParticipantes.appendChild(item)
 
-            let total = Number(span.textContent)
-            total -= 1
-            span.textContent = total
+                function removerNome() {
+                    item.remove()
 
-            if (nomes.length < 1) {
-                nSorteado.style.display = "none"
-            } else {
-                nSorteado.style.display = "block"
+                    nomes = nomes.filter(n => n !== nome)
+
+                    let total = Number(span.textContent)
+                    total -= 1
+                    span.textContent = total
+
+                    if (nomes.length < 1) {
+                        nSorteado.style.display = "none"
+                    }
+                }
+                rm.addEventListener("click", removerNome)
             }
-        }
-
-        rm.addEventListener("click", removerNome)
-
-        input.value = ""
+        })
+                input.value = ""
     } else {
-        alert('Insira um nome')}
+        alert('Insira um nome')
+    }
 }
 
 // inserir quando clicar em adicionar:
@@ -56,20 +62,11 @@ function adicionarNomes() {
 // - adiciona o nome do participante na lista
 // - limpa o valor do input
 
-// inserir, quando clicar em adicionar:
-// - adiciona em um Array e limpa o input
-// - aumenta total de participantes
-// - adiciona o nome do participante na lista
-
-
 function evento(e) {
     if (e.key === "Enter") {
         adicionarNomes()
     }
 }
-
-input.addEventListener("keydown", evento)
-botao.addEventListener("click", adicionarNomes);
 
 function sortearNome() {
     if (nomes.length > 1) {
@@ -82,7 +79,6 @@ function sortearNome() {
     }
 }
 
-<<<<<<< HEAD
 function sortearNovamente() {
     if (nomes.length > 1) {
         sortearNome()
@@ -92,20 +88,13 @@ function sortearNovamente() {
 }
 
 function SortearAmigoSecreto() {
-=======
-function SortearAmigoSecreto() {
-    const n = nomes.length
-    if (n < 3) {
-        alert("Erro: precisa ser maior que 3");
-    }
->>>>>>> 7c62bf63e3625ef91ec55728eac91ec923418d98
     let nomesAmigos = [...nomes]
     let resultados = {}
     for (const nome of nomes){
         let countWhile = true
         let index
         while (countWhile){
-            const index = Math.floor(Math.random() * nomesAmigos.length)
+            index = Math.floor(Math.random() * nomesAmigos.length)
             if (nome !== nomesAmigos[index]){
                 countWhile = false
             }
@@ -116,10 +105,9 @@ function SortearAmigoSecreto() {
     console.log(resultados)
     return resultados
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 7c62bf63e3625ef91ec55728eac91ec923418d98
+input.addEventListener("keydown", evento)
+botao.addEventListener("click", adicionarNomes);
 botao1.addEventListener("click", sortearNome);
 botao2.addEventListener("click", sortearNovamente);
 btnSortearAmigo.addEventListener("click", SortearAmigoSecreto);
