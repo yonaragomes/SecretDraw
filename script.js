@@ -82,6 +82,7 @@ function sortearNome() {
     }
 }
 
+<<<<<<< HEAD
 function sortearNovamente() {
     if (nomes.length > 1) {
         sortearNome()
@@ -91,6 +92,13 @@ function sortearNovamente() {
 }
 
 function SortearAmigoSecreto() {
+=======
+function SortearAmigoSecreto() {
+    const n = nomes.length
+    if (n < 3) {
+        alert("Erro: precisa ser maior que 3");
+    }
+>>>>>>> 7c62bf63e3625ef91ec55728eac91ec923418d98
     let nomesAmigos = [...nomes]
     let resultados = {}
     for (const nome of nomes){
@@ -108,7 +116,10 @@ function SortearAmigoSecreto() {
     console.log(resultados)
     return resultados
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7c62bf63e3625ef91ec55728eac91ec923418d98
 botao1.addEventListener("click", sortearNome);
 botao2.addEventListener("click", sortearNovamente);
 btnSortearAmigo.addEventListener("click", SortearAmigoSecreto);
