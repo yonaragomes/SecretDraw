@@ -18,8 +18,25 @@ function adicionarNomes() {
         span.textContent = nParticipantes
 
         const item = document.createElement("li")
+        const rm = document.createElement("span")
+        rm.classList.add("remover")
+        rm.textContent = "x"
+
         item.textContent = nome
+        item.appendChild(rm)
         listaParticipantes.appendChild(item)
+
+        function removerNome() {
+            item.remove()
+
+            nomes = nomes.filter(n => n !== nome)
+
+            let total = Number(span.textContent)
+            total -= 1
+            span.textContent = total
+        }
+
+        rm.addEventListener("click", removerNome)
 
         input.value = ""
     } else {

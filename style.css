@@ -146,6 +146,10 @@ button:hover {
   background: #7f1d1d;
 }
 
+#totalParticipantes {
+  color: var(--vermelho);
+}
+
 #listaParticipantes {
   margin: 10px 20px;
   list-style: none;
@@ -166,6 +170,25 @@ button:hover {
   font-size: 14px;
   
   animation: slideIn 0.2s ease;
+}
+
+.remover {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20px;
+    height: 20px;
+
+    margin-left: 10px;
+
+    border-radius: 50%;
+    background: red;
+    color: white;
+
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 @keyframes slideIn {
