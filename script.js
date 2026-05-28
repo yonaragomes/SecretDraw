@@ -32,14 +32,12 @@ function adicionarNomes() {
 // - adiciona o nome do participante na lista
 // - limpa o valor do input
 
-<<<<<<< HEAD
 // inserir, quando clicar em adicionar:
 // - adiciona em um Array e limpa o input
 // - aumenta total de participantes
 // - adiciona o nome do participante na lista
 
 
-=======
 function evento(e) {
     if (e.key === "Enter") {
         adicionarNomes()
@@ -77,4 +75,3 @@ botao2.addEventListener("click", sortearNovamente)
 // - sortear pelo indice (com Math.random)
 // - substituir o nome pelo indice
 // - esconder o botao sortear e "substituir" pelo nomeSorteado
->>>>>>> e0680a06767f5ea351c9a9ad8942496fc9b255e5
