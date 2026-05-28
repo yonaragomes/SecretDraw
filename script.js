@@ -5,6 +5,7 @@ const botao1 = document.getElementById("btnSortearSimples")
 const botao2 = document.getElementById("btnNovamente")
 const nSorteado = document.getElementById("resultadoSimples")
 const span = document.getElementById("totalParticipantes")
+const btnSortearAmigo = document.getElementById("btnSortearAmigo")
 
 nSorteado.style.display = "none"
 
@@ -34,6 +35,12 @@ function adicionarNomes() {
             let total = Number(span.textContent)
             total -= 1
             span.textContent = total
+
+            if (nomes.length < 1) {
+                nSorteado.style.display = "none"
+            } else {
+                nSorteado.style.display = "block"
+            }
         }
 
         rm.addEventListener("click", removerNome)
@@ -72,20 +79,39 @@ function sortearNome() {
         botao1.style.display = "none"
         nSorteado.style.display = "block"
         nSorteado.textContent = nomeSorteado
-    } 
-}
-
-function sortearNovamente() {
-    if (sortearNome) {
-        const indiceAleatorio = Math.floor(Math.random() * nomes.length)
-        const nomeSorteado = nomes[indiceAleatorio]
-
-        nSorteado.textContent = nomeSorteado
     }
 }
 
+function sortearNovamente() {
+    if (nomes.length > 1) {
+        sortearNome()
+    } else {
+        nSorteado.style.display = "none"
+    }
+}
+
+function SortearAmigoSecreto() {
+    let nomesAmigos = [...nomes]
+    let resultados = {}
+    for (const nome of nomes){
+        let countWhile = true
+        let index
+        while (countWhile){
+            const index = Math.floor(Math.random() * nomesAmigos.length)
+            if (nome !== nomesAmigos[index]){
+                countWhile = false
+            }
+        }
+        resultados[nome] = nomesAmigos[index]
+        nomesAmigos.splice(index, 1)
+    }
+    console.log(resultados)
+    return resultados
+}
+
 botao1.addEventListener("click", sortearNome);
-botao2.addEventListener("click", sortearNovamente)
+botao2.addEventListener("click", sortearNovamente);
+btnSortearAmigo.addEventListener("click", SortearAmigoSecreto);
 
 // sortear nome:
 // - tem que pegar a lista de nomes e verificar se > 1
