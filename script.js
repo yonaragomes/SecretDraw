@@ -5,6 +5,7 @@ const botao1 = document.getElementById("btnSortearSimples")
 const botao2 = document.getElementById("btnNovamente")
 const nSorteado = document.getElementById("resultadoSimples")
 const span = document.getElementById("totalParticipantes")
+const btnSortearAmigo = document.getElementById("btnSortearAmigo")
 
 nSorteado.style.display = "none"
 
@@ -32,14 +33,12 @@ function adicionarNomes() {
 // - adiciona o nome do participante na lista
 // - limpa o valor do input
 
-<<<<<<< HEAD
 // inserir, quando clicar em adicionar:
 // - adiciona em um Array e limpa o input
 // - aumenta total de participantes
 // - adiciona o nome do participante na lista
 
 
-=======
 function evento(e) {
     if (e.key === "Enter") {
         adicionarNomes()
@@ -69,12 +68,30 @@ function sortearNovamente() {
     }
 }
 
+function SortearAmigoSecreto() {
+    let nomesAmigos = [...nomes]
+    let resultados = {}
+    for (const nome of nomes){
+        let countWhile = true
+        let index
+        while (countWhile){
+            const index = Math.floor(Math.random() * nomesAmigos.length)
+            if (nome !== nomesAmigos[index]){
+                countWhile = false
+            }
+        }
+        resultados[nome] = nomesAmigos[index]
+        nomesAmigos.splice(index, 1)
+    }
+    console.log(resultados)
+    return resultados
+}
 botao1.addEventListener("click", sortearNome);
-botao2.addEventListener("click", sortearNovamente)
+botao2.addEventListener("click", sortearNovamente);
+btnSortearAmigo.addEventListener("click", SortearAmigoSecreto);
 
 // sortear nome:
 // - tem que pegar a lista de nomes e verificar se > 1
 // - sortear pelo indice (com Math.random)
 // - substituir o nome pelo indice
 // - esconder o botao sortear e "substituir" pelo nomeSorteado
->>>>>>> e0680a06767f5ea351c9a9ad8942496fc9b255e5
