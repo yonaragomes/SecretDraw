@@ -86,6 +86,10 @@ function sortearNovamente() {
 }
 
 function SortearAmigoSecreto() {
+    const n = nomes.length
+    if (n < 3) {
+        alert("Erro: precisa ser maior que 3");
+    }
     let nomesAmigos = [...nomes]
     let resultados = {}
     for (const nome of nomes){
