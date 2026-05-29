@@ -1,4 +1,5 @@
 let nomes = [];
+let resultadoAmigo = {}
 const input = document.getElementById("inputNome")
 const botao = document.getElementById("btnAdicionar")
 const botao1 = document.getElementById("btnSortearSimples")
@@ -6,6 +7,10 @@ const botao2 = document.getElementById("btnNovamente")
 const nSorteado = document.getElementById("resultadoSimples")
 const span = document.getElementById("totalParticipantes")
 const btnSortearAmigo = document.getElementById("btnSortearAmigo")
+const selectParticipante = document.getElementById("selectParticipante")
+const btnVerAmigo = document.getElementById("btnVerAmigo")
+const mensagem = document.getElementById("msgAmigoSecreto")
+const btnRefazer = document.getElementById("btnRefazer")
 
 nSorteado.style.display = "none"
 
@@ -34,11 +39,23 @@ function adicionarNomes() {
                 item.appendChild(rm)
                 listaParticipantes.appendChild(item)
 
+                const option = document.createElement("option")
+                option.value = nome
+                option.textContent = nome
+                selectParticipante.appendChild(option)
+
                 function removerNome() {
                     item.remove()
 
                     nomes = nomes.filter(n => n !== nome)
 
+                    const options = selectParticipante.querySelectorAll("option")
+
+                    options.forEach(option => {
+                        if (option.value === nome) {
+                            option.remove()
+                        }
+    })
                     let total = Number(span.textContent)
                     total -= 1
                     span.textContent = total
@@ -94,22 +111,56 @@ function sortearNovamente() {
 // - esconder o botao sortear e "substituir" pelo nomeSorteado
 
 function SortearAmigoSecreto() {
+    if (nomes.length < 2) {
+        alert("Adicione pelo menos 2 participantes")
+        return
+    }
+
     let nomesAmigos = [...nomes]
-    let resultados = {}
-    for (const nome of nomes){
-        let countWhile = true
+    resultadoAmigo = {}
+
+    for (const nome of nomes) {
+        let valido = false
         let index
-        while (countWhile){
+
+        while (!valido) {
             index = Math.floor(Math.random() * nomesAmigos.length)
-            if (nome !== nomesAmigos[index]){
-                countWhile = false
+
+            if (nome !== nomesAmigos[index]) {
+                valido = true
             }
         }
-        resultados[nome] = nomesAmigos[index]
+
+        resultadoAmigo[nome] = nomesAmigos[index]
         nomesAmigos.splice(index, 1)
     }
-    console.log(resultados)
-    return resultados
+
+    mensagem.style.display = "block"
+    mensagem.textContent = "Sorteio realizado com sucesso!"
+}
+
+function verAmigoSecreto() {
+    const participante = selectParticipante.value
+
+    if (participante === "") {
+        alert("Selecione um participante")
+        return
+    }
+
+    if (Object.keys(resultadoAmigo).length === 0) {
+        alert("Realize o sorteio primeiro")
+        return
+    }
+
+    mensagem.style.display = "block"
+    mensagem.textContent = `${participante}, seu amigo secreto é ${resultadoAmigo[participante]}`
+}
+
+function refazerSorteio() {
+    resultadoAmigo = {}
+
+    mensagem.style.display = "none"
+    selectParticipante.value = ""
 }
 
 input.addEventListener("keydown", evento)
@@ -117,3 +168,22 @@ botao.addEventListener("click", adicionarNomes);
 botao1.addEventListener("click", sortearNome);
 botao2.addEventListener("click", sortearNovamente);
 btnSortearAmigo.addEventListener("click", SortearAmigoSecreto);
+btnSortearAmigo.addEventListener("click", SortearAmigoSecreto);
+btnVerAmigo.addEventListener("click", verAmigoSecreto)
+btnRefazer.addEventListener("click", refazerSorteio)
+
+// amigo secreto:
+// - verificar se existe mais de 1 participante
+// - criar uma cópia da lista de nomes
+// - sortear um índice aleatório para cada participante
+// - impedir que a pessoa tire ela mesma
+// - salvar o resultado do sorteio
+// - remover o nome já sorteado da lista
+// - mostrar mensagem de sorteio realizado 
+
+
+// sortear nome:
+// - tem que pegar a lista de nomes e verificar se > 1
+// - sortear pelo indice (com Math.random)
+// - substituir o nome pelo indice
+// - esconder o botao sortear e "substituir" pelo nomeSorteado
