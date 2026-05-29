@@ -24,6 +24,13 @@ function adicionarNomes() {
             nome = nome.trim()
 
             if (nome !== "") {
+                const jaExiste = nomes.some(n => n.toLowerCase() === nome.toLowerCase())
+                
+                if (jaExiste) {
+                    alert(`O nome "${nome}" já foi inserido!`)
+                    return
+                }
+
                 nomes.push(nome)
 
                 let nParticipantes = Number(span.textContent)
