@@ -226,3 +226,32 @@ li {
 .cardSS #btnNovamente {
   margin-top: 10px;
 } 
+
+select {
+  width: 100%;
+  padding: 10px;
+
+  background: rgba(255, 255, 255, 0.052);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 6px;
+
+  margin-top: 10px;
+}
+
+select option {
+  background: #111;
+}
+
+#msgAmigoSecreto {
+  margin-top: 12px;
+  padding: 14px;
+
+  background: rgba(185, 28, 28, 0.12);
+  border-radius: 10px;
+
+  text-align: center;
+  font-weight: bold;
+
+  display: none;
+}
