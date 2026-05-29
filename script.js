@@ -82,10 +82,16 @@ function sortearNome() {
 function sortearNovamente() {
     if (nomes.length > 1) {
         sortearNome()
-    } else {
+    } else if (nomes.length <= 1) {
         nSorteado.style.display = "none"
     }
 }
+
+// sortear nome:
+// - tem que pegar a lista de nomes e verificar se > 1
+// - sortear pelo indice (com Math.random)
+// - substituir o nome pelo indice
+// - esconder o botao sortear e "substituir" pelo nomeSorteado
 
 function SortearAmigoSecreto() {
     let nomesAmigos = [...nomes]
@@ -111,9 +117,3 @@ botao.addEventListener("click", adicionarNomes);
 botao1.addEventListener("click", sortearNome);
 botao2.addEventListener("click", sortearNovamente);
 btnSortearAmigo.addEventListener("click", SortearAmigoSecreto);
-
-// sortear nome:
-// - tem que pegar a lista de nomes e verificar se > 1
-// - sortear pelo indice (com Math.random)
-// - substituir o nome pelo indice
-// - esconder o botao sortear e "substituir" pelo nomeSorteado
